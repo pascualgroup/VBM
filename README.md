@@ -1,7 +1,7 @@
 # VBM
 			CODE DENGUE
 
-(C) Copyright: 2017 V T Romeo Aznar and Hernán Solari unless otherwise stated.
+(C) Copyright: 2017 V T Romeo Aznar and Hernán G. Solari unless otherwise stated.
 
 Dengue is released under GNU GPL license (see license.txt)
 
