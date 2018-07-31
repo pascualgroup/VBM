@@ -1,0 +1,38 @@
+/* rates constant in time */
+   /* C.Variable are variables that belong to structer Common defined in dengue.h */
+   //C.mm=C.nm=0.09; /* mortality and born mosquitoes rate*/
+   C.bitr=0.23; /* biting rate */
+   C.trans_mh=C.trans_hm=0.75; /* probability of transmit the infection*/
+   C.IncubationPeriod=5.0; /* incubation time of the infection */
+   C.mh=C.nh=1/(70*365); /* mortality and born human rate*/
+   
+   C.V0=1.;/* Coefficient related to the function V(N) for each unit */
+   C.Inf0=1; /*first number of infected humans*/
+   C.lambda=-0.1;/* Defined for human spatial distributions*/
+   /* flight rates to the neighbors patchs, sum=1 */
+   C.pvuel[0]=C.pvuel[2]=C.pvuel[4]=C.pvuel[6]=0.085;
+   C.pvuel[1]=C.pvuel[3]=C.pvuel[5]=C.pvuel[7]=0.165;
+
+   C.centro=(int)rint(LIMfilas/2);   
+   DistribucionesEspaciales(C.centro,C.V0);/* gives value to human and vector capacity distributions */ /* To change these functions go to rates.c*/
+   printf("centro=%d\n",C.centro);
+   
+   /* seteo C.V0=A0 y luego para el lineal C.V0=A0/C.Nh, cuadratico C.V0=A0/(C.Nh*C.Nh), sqrt C.V0=A0/sqrt(C.Nh) y para sigma hay que hacerlo a mano cada vez*/
+   /* Si seteo para el caso V(N)=cte --> C.V0=a0 (Con Vtotal=a0*LIM*LIM) y C.Nh=N0_unif*LIM*LIM*/
+   /* V/N=1
+        * cte 50, 100, 200, 300, 400, 500
+        * sqrt 7.146743, 10.107021, 14.293486, 17.505874, 20.214042, 22.599986
+        * sigmoidea 1450.6799, 884.5358, 440.0012, 369.3792, 444.8997, 524.8092
+        * cuadratica 0.018341826 0.009170913 0.004585457 0.003056971 0.002292728 0.001834183
+        * lineal 1.0 1.0 1.0 1.0 1.0 1.0
+ */
+
+/* caso Nij=No*exp(0.1*dij) (que la poblacion crece cuando d aumenta)
+   * cte 50, 100, 200, 300, 400, 500
+   * sqrt 7.14071, 10.09849, 14.28142, 17.49110, 20.19698, 22.58091
+   * sigmoidea 1466.5037, 908.0236, 427.5916, 394.0592, 447.3166, 526.8435
+   * cuadratica 0.018575206, 0.009287603, 0.004643802, 0.003095868, 0.002321901, 0.001857521
+   * lineal 1.0 1.0 1.0 1.0 1.0 1.0
+*/
+
+
